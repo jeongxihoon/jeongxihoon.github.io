@@ -10,13 +10,17 @@ toc_sticky: true
 
 
 -------------------------------
+## **Introduction**
+
+> A man who want to be a Data Science
+
+
 ## **Profile**
 
 
 - **Name** : 정지훈 / Jihoon, Jeong
+- **Location** : Seongnam-si, Republic of Korea
 - **MBTI** : ESTJ-A (뜬금없는 TMI)
-
-
 
 
 ## **Career**
