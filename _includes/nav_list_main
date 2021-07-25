@@ -23,6 +23,14 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+        <span class="nav__sub-title">Chat</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "blog" %}
+                        <li><a href="/categories/blog" class="">블로그 업데이트 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         <span class="nav__sub-title">Coming Soon...</span>
             <ul>
                 {% for category in site.categories %}
