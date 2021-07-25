@@ -8,5 +8,5 @@ sidebar_main: true
 
 
 
-{% assign posts = site.categories.coming %}
+{% assign posts = site.categories.Coming %}
 {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
