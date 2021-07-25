@@ -29,11 +29,6 @@ layout: default
           {% if page.title %}<h1 id="page-title" class="page__title p-name" itemprop="headline">
             <a href="{{ page.url | absolute_url }}" class="u-url" itemprop="url">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
           </h1>{% endif %}
-          {% if post.categories[0] != null %}
-		        <p class="archive__item-excerpt"><i class="far fa-calendar-alt"></i> {{ post.date | date: "%m/%d/%Y" }} &nbsp; <i class="far fa-folder-open"></i> {{ post.categories }}</p>
-	        {% else %}
-            <p class="archive__item-excerpt"><i class="far fa-calendar-alt"></i> {{ post.date | date: "%m/%d/%Y" }}
-	        {% endif %}
           {% include page__meta.html %}
         </header>
       {% endunless %}
