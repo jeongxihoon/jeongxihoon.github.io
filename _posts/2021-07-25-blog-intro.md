@@ -7,7 +7,7 @@ categories:
 
 comments: true
 
-toc: ture
+toc: true
 toc_sticky: true
 
 date: 2021-07-25
