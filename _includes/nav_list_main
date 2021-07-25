@@ -11,19 +11,18 @@
             📂 <span style="font-family:'SeoulNamsanM';">전체 글 수</style> <span style="font-family:'SeoulNamsanM';">{{sum}}</style> <span style="font-family:'SeoulNamsanM';">개</style> 
       </li>
       <li>
-        <span class="nav__sub-title">Chat</span>
+        <span class="nav__sub-title">etc</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "chat" %}
-                        <li><a href="/categories/chat" class="">잡담 ({{category[1].size}})</a></li>
+                    {% if category[0] == "Chat" %}
+                        <li><a href="/categories/chat" class="">Chat ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">Blog</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "blog" %}
-                        <li><a href="/categories/blog" class="">Blog Development ({{category[1].size}})</a></li>
+                    {% if category[0] == "Blog" %}
+                        <li><a href="/categories/chat" class="">Blog ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
