@@ -5,6 +5,8 @@ excerpt: "아직은 Beta Version인 블로그가 곧 열릴 것인데,,,"
 categories:
   - coming
 
+comments: true
+
 toc: false
 toc_sticky: false
 
