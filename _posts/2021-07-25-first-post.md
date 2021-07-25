@@ -5,6 +5,8 @@ excerpt: "Github를 이용해 '맨 땅에 헤딩'하는 방식으로 정지훈�
 categories:
   - chat
 
+comments: true
+
 toc: false
 toc_sticky: false
 
