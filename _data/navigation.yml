@@ -2,10 +2,10 @@
 main:
   - title: "Home"
     url: https://jeongxihoon.github.io/
+  - title: "About Me"
+    url: https://jeongxihoon.github.io/about_me
   - title: "Category"
     url: https://jeongxihoon.github.io/categories
-  # - title: "Sample Posts"
-  #   url: /year-archive/
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
