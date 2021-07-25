@@ -12,7 +12,7 @@ toc_sticky: true
 -------------------------------
 ## **Introduction**
 
-> A man who want to be a Data Science
+> A man who want to be a 'Data Science'
 
 
 ## **Profile**
