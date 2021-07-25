@@ -1,5 +1,5 @@
 ---
-title: "잡담"
+title: "Chat"
 layout: archive
 permalink: categories/chat
 author_profile: true
