@@ -3,7 +3,7 @@ title: "[Blog] Github.io를 이용해서 블로그 만들기, 그 첫 번째"
 excerpt: "Github.io를 이용해서 블로그를 만들어보았다."
 
 categories:
-  - blog
+  - Blog
 
 comments: true
 
