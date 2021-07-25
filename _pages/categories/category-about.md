@@ -13,7 +13,8 @@ toc_sticky: true
 ## **Profile**
 
 
-- **Name** : Jihoon, Jeong
+- **Name** : 정지훈 / Jihoon, Jeong
+- **MBTI** : ESTJ-A
 
 
 
