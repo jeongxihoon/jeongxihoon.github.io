@@ -25,6 +25,13 @@ toc_sticky: true
 - Korea University, Industrial Management Engineering (2019 ~ )
 
 
+## **Want to be**
+
+
+- Improving Python Programming
+- Improving R Programming
+- Data Analysis with Python & R
+- Data Scientist
 
 
 ## **Contact & SNS**
