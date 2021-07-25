@@ -14,7 +14,7 @@ toc_sticky: true
 
 
 - **Name** : 정지훈 / Jihoon, Jeong
-- **MBTI** : ESTJ-A
+- **MBTI** : ESTJ-A (뜬금없는 TMI)
 
 
 
