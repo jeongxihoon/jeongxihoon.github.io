@@ -11,11 +11,14 @@ toc_sticky: true
 
 -------------------------------
 ## **Introduction**
+===================
+
 
 > A man who want to be a 'Data Science'
 
 
 ## **Profile**
+===============
 
 
 - **Name** : 정지훈 / Jihoon, Jeong
@@ -24,12 +27,14 @@ toc_sticky: true
 
 
 ## **Career**
+==============
 
 
 - Korea University, Industrial Management Engineering (2019 ~ )
 
 
 ## **Want to be**
+==================
 
 
 - Improving Python Programming
@@ -39,6 +44,7 @@ toc_sticky: true
 
 
 ## **Contact & SNS**
+=====================
 
 
 - **E-mail** : jhoon85212@gmail.com
