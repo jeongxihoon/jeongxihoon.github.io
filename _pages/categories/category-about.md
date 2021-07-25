@@ -23,3 +23,14 @@ toc_sticky: true
 
 
 - Korea University, Industrial Management Engineering (2019 ~ )
+
+
+
+
+## **Contact & SNS**
+
+
+- **E-mail** : jhoon85212@gmail.com
+- **Github** : [github.com/jeongxihoon](https://github.com/jeongxihoon)
+- **Facebook** : [facebook.com/jhoon85212](https://www.facebook.com/jhoon85212)
+- **Instagram** : [@jeongxihoon__](https://www.instagram.com/jeongxihoon__)
