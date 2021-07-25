@@ -7,7 +7,7 @@ sidebar_main: true
 toc: true
 toc_sticky: true
 ---
-# Profile.
+# Profile
 
 
-*Name : Jihoon, Jeong
+- Name : Jihoon, Jeong
