@@ -9,8 +9,16 @@ toc_sticky: true
 ---
 
 
-# Profile
+-------------------------------
+## **Profile**
 
 
-- Name : Jihoon, Jeong
+- **Name** : Jihoon, Jeong
 
+
+
+
+## **Career**
+
+
+- Korea University, Industrial Management Engineering (2019 ~ )
