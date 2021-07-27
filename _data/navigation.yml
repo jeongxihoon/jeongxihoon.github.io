@@ -6,7 +6,7 @@ main:
     url: https://jeongxihoon.github.io/about_me
   - title: "Category"
     url: https://jeongxihoon.github.io/categories
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
+  - title: "Tag"
+    url: https://jeongxihoon.github.io/tags
   # - title: "Sitemap"
   #   url: /sitemap/
