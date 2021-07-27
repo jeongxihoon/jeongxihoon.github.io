@@ -1,6 +1,6 @@
 ---
 title: "Python"
-layout: tags
+layout: tag
 permalink: tags/python
 author_profile: true
 sidebar_main: true
