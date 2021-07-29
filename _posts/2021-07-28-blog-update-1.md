@@ -7,6 +7,7 @@ categories:
 
 tags:
   - Blog
+  - Tag
 
 comments: true
 
