@@ -21,7 +21,7 @@ toc_sticky: true
 
 - **Name** : 정지훈 / Jihoon, Jeong
 - **Location** : Seongnam-si, Republic of Korea
-- **MBTI** : ESTJ-A (뜬금없는 TMI)
+- **MBTI** : ESTJ-A ~~(뜬금없는 TMI)~~
 
 
 ## **Career**
