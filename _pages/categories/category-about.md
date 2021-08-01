@@ -10,6 +10,9 @@ toc_sticky: true
 
 
 -------------------------------
+![정지훈, 입대 후 첫 휴가때 사진이다.]("https://scontent-ssn1-1.xx.fbcdn.net/v/t1.6435-9/165897040_1318111975220006_8347677221555786746_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=7v3wHGj70eoAX_u8JkY&tn=yv-9s_I_kPylStqH&_nc_ht=scontent-ssn1-1.xx&oh=8b6be9547c2dcbbde0e91953cbd27780&oe=6122D54B")
+
+
 ## **Introduction**
 
 
