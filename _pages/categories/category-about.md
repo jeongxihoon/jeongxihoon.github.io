@@ -41,7 +41,8 @@ toc_sticky: true
 ## **Career**
 
 
-- Korea University, Industrial Management Engineering (2019 ~ )
+- **Korea University, Seoul**
+  - Bachelor of Engineering (B.E.) in Industrial Management Engineering (2019 ~ current)
 
 
 ## **Want to be**
