@@ -42,7 +42,7 @@ toc_sticky: true
 
 
 - **Korea University, Seoul**
-  - Bachelor of Engineering (B.E.) in Industrial Management Engineering (2019 ~ current)
+  - Bachelor of Engineering (B.E.) in Industrial Management Engineering (Mar 2019 ~ current)
 
 
 ## **Want to be**
