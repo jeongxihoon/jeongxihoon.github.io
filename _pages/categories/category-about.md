@@ -52,9 +52,7 @@ toc_sticky: true
 ## **Want to be**
 
 
-- Improving Python Programming
-- Improving R Programming
-- Data Analysis with Python & R
+- Data Analysist
 - Data Scientist
 
 
