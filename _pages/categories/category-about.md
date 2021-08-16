@@ -26,7 +26,11 @@ toc_sticky: true
 > A man who wants to be a 'Data Scientist'
 
  　'Data Scientist'를 꿈꾸는 평범한 대학생이다. 현재는 군 복무중이다.
+  
+  
  　수많은 Data 속에서 분석을 통해 '가치'를 찾아내는 것에 흥미를 느끼는 공대생이다.
+  
+  
  　배우는 것에 집중하는 학부생이며, 아직도 배워나갈 것들이 많다.
 
 
