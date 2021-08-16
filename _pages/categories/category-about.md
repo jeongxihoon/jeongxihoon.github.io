@@ -23,7 +23,7 @@ toc_sticky: true
 ## **Introduction**
 
 
-> A man who want to be a 'Data Scientist'
+> A man who wants to be a 'Data Scientist'
 
 ##### 　'Data Scientist'를 꿈꾸는 평범한 대학생이다. 현재는 군 복무중이다.
 ##### 　수많은 Data 속에서 분석을 통해 '가치'를 찾아내는 것에 흥미를 느끼는 공대생이다.
