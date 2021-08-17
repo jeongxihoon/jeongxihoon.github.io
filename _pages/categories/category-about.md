@@ -37,7 +37,8 @@ toc_sticky: true
  　본인에 대한 더 자세한 정보를 보여줄 수 있는 문답이 보고 싶다면...↓↓
   
   
- 　[문답 Section 1](https://jeongxihoon.github.io/chat/about_me1/)
+ 　[본인을 소개하는 문답 Section 1](https://jeongxihoon.github.io/chat/about_me1/)
+ 　[본인을 소개하는 문답 Section 2](https://jeongxihoon.github.io/chat/about_me2/)
 
 
 ## **Profile**
