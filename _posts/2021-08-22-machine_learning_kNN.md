@@ -498,6 +498,7 @@ type(train)  # split한 Data의 type은 Pandas의 DataFrame
     pandas.core.frame.DataFrame
 
 
+　
 
 
 ```python
@@ -517,6 +518,8 @@ train.info()  # 80개의 Data
     dtypes: float64(3), object(2)
     memory usage: 3.8+ KB
 
+
+　
 
 
 ```python
