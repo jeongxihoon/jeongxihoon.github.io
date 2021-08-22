@@ -250,7 +250,7 @@ plt.title('STL and 2P in 2d Plane')
 
 
     
-![png](/machine_learning_kNN/output_9_2.png)
+![png](/post_images/machine_learning_kNN/output_9_2.png)
     
 
 
@@ -283,7 +283,7 @@ plt.title('AST and 2P in 2d Plane')
 
 
     
-![png](/machine_learning_kNN/output_10_2.png)
+![png](/post_images/machine_learning_kNN/output_10_2.png)
     
 
 
@@ -316,7 +316,7 @@ plt.title('BLK and 3P in 2d Plane')
 
 
     
-![png](/machine_learning_kNN/output_11_2.png)
+![png](/post_images/machine_learning_kNN/output_11_2.png)
     
 
 
@@ -349,7 +349,7 @@ plt.title('TRB and 3P in 2d Plane')
 
 
     
-![png](/machine_learning_kNN/output_12_2.png)
+![png](/post_images/machine_learning_kNN/output_12_2.png)
     
 
 
