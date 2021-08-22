@@ -632,7 +632,7 @@ plt.show()
 
 
     
-![png](output_27_0.png)
+![png](/post_images/machine_learning_kNN/output_27_0.png)
     
 
 
