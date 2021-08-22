@@ -1,6 +1,6 @@
 ---
-title: "[Machine Learning] 머신러닝 공부 시작!"
-excerpt: "Python을 기반으로 하는 Machine Learning 공부를 시작했습니다."
+title: "[Machine Learning] 머신러닝과 딥러닝 공부 시작!"
+excerpt: "Python을 바탕으로, Machine Learning & Deep Learning에 대한 공부를 시작했습니다."
 
 categories:
   - Machine Learning
@@ -78,6 +78,15 @@ last_modified_at: 2021-08-22
 
 
 이번 책도 역시 저자분게서 깃허브에 예제 코드를 올려주셨다. 잘 이용할 예정!!
+
+
+그리고 Machine Learning 포스트를 올리기 위한 Category도 새로 만들었다.
+
+
+Python > Machine Learning 구조이다.
+
+
+Deep Learning에 대한 내용은 책의 뒷 Chapter에 배치가 되어 있어서, 나중에 Deep Learning을 공부할 때 Deep Learning 포스트를 위한 Category를 만들 예정.
 
 
 　
