@@ -11,8 +11,8 @@ tags:
 
 comments: true
 
-toc: true
-toc_sticky: true
+toc: false
+toc_sticky: false
 
 date: 2021-08-22
 last_modified_at: 2021-08-22
