@@ -370,9 +370,6 @@ plt.title('TRB and 3P in 2d Plane')
 ![png](/post_images/machine_learning_kNN/output_12_2.png)
 
 
-　
-
-
 4가지 그래프 모두를 보면 알 수 있듯이, Data의 구분이 확실하지 않음(경계가 너무 근접해서 분류하기 모호) -> 가설이 타당해보임!
 
 
