@@ -41,14 +41,6 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">Coming Soon</span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "Coming" %}
-                        <li><a href="/categories/coming" class="">공개 예정 ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
       </li>
   </ul>
 </nav>
