@@ -572,6 +572,9 @@ train 변수에는 train Data가, test 변수에는 test Data가 원래의 df에
 　
 
 
+다음은 'k-fold 교차 검증'을 위한 코드이다.
+
+
 ```python
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import cross_val_score
@@ -635,6 +638,7 @@ plt.show()
 ![png](/post_images/machine_learning_kNN/output_27_0.png)
     
 
+위의 그래프를 보면 k값이 9일 때, 정확도가 가장 높다는 것을 알 수 있다.
 
 
 ```python
@@ -652,6 +656,9 @@ print('The best number of k : {}'.format(k))
 
 
 ### 모델 테스트
+
+
+모델 테스트를 진행하기 위한 코드는 다음과 같다.
 
 
 ```python
