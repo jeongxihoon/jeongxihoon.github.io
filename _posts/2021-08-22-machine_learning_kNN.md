@@ -61,14 +61,6 @@
 
 
 ```python
-import os
-
-os.getcwd()
-os.chdir('/workspace/DS033')
-```
-
-
-```python
 import pandas as pd
 
 df = pd.read_csv('DS060/data/csv/basketball_stat.csv')
@@ -217,7 +209,7 @@ df.value_counts('Pos')
 | BLK | 한 경기 평균 블로킹 성공 횟수 |
 
 
-포지션 설명
+**포지션 설명**  ~~설명하려면 필요해서...~~
 
 
 - C : 센터; **블로킹**, **리바운드** 역할, 공을 바깥으로 빼서 공격 찬스를 만들기도 하고, 골대 근처에서 2점슛으로 득점도 함.
@@ -258,7 +250,7 @@ plt.title('STL and 2P in 2d Plane')
 
 
     
-![png](output_9_2.png)
+![png](/machine_learning_kNN/output_9_2.png)
     
 
 
@@ -291,7 +283,7 @@ plt.title('AST and 2P in 2d Plane')
 
 
     
-![png](output_10_2.png)
+![png](/machine_learning_kNN/output_10_2.png)
     
 
 
@@ -324,7 +316,7 @@ plt.title('BLK and 3P in 2d Plane')
 
 
     
-![png](output_11_2.png)
+![png](/machine_learning_kNN/output_11_2.png)
     
 
 
@@ -357,7 +349,7 @@ plt.title('TRB and 3P in 2d Plane')
 
 
     
-![png](output_12_2.png)
+![png](/machine_learning_kNN/output_12_2.png)
     
 
 
@@ -802,7 +794,3 @@ comparison
 
 랜덤으로 테스트 Data와 훈련 Data가 나누어지다 보니 그런 것 같다.
 
-
-```python
-
-```
