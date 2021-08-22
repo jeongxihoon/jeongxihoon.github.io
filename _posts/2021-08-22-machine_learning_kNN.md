@@ -1,6 +1,52 @@
-# [4.2] k-최근접 이웃 (k-Nearest Neighbor, kNN) 알고리즘
+---
+title: "[Machine Learning] k-최근접 이웃(kNN) 알고리즘으로 농구선수 포지션 예측하기!"
+excerpt: "k-최근접 이웃(k-Nearest Neighbor, kNN) 알고리즘과 농구선수 게임 Data를 이용하여 농구선수 포지션을 예측해보았다."
 
-- 지도학습 알고리즘 > '분류'에 이용
+categories:
+  - Machine Learning
+
+tags:
+  - Python
+  - Machine Learning
+  - kNN
+  - scikit-learn
+
+comments: true
+
+toc: true
+toc_sticky: true
+
+date: 2021-08-22
+last_modified_at: 2021-08-22
+---
+
+
+이전 포스트에서 소개한 머신러닝 책에서 처음으로 소개하는 머신러닝 알고리즘이 바로,
+
+
+**k-최근접 이웃 (k-Nearest Neighbor, kNN) 알고리즘**이다.
+
+
+이는 대표적인 지도학습(Supervised Learning) 알고리즘으로, 데이터 분류(Classification)에 이용된다.
+
+
+책에서는 이 알고리즘과 2017년 NBA 농구선수의 실제 게임 Data를 이용해 농구선수의 포지션을 예측하는 예제를 진행했다.
+
+
+이번 포스트에서는 나 나름대로 예제를 하면서 정리한 내용을 포스팅할 예정이다.
+
+
+　
+
+
+Jupyter Notebook에 과정을 진행해가면서 정리하고 싶은 것들을 주석달면서 진행해봤다.
+
+
+~~그리고나서 md파일로 그대로 다운받아고 블로그에 업로드해서 그런지 약간 어색할 수도 있음~~
+
+
+　
+
 
 ## 이론
 
@@ -33,7 +79,6 @@
 　
 
 
-
 　
 
 
@@ -43,10 +88,12 @@
 ### 장점
 
 
-
 - 거리를 구하는 방식을 사용 -> 즉, 숫자로 된 Data에 사용하면 높은 정확도를 기대할 수 있음.
 - 예측 시점에서 Data가 주어지면 바로 기존 Data와의 거리를 계산하기 때문에 미리 모델 학습을 할 필요가 없음. -> 실시간 Data 사용에 유리
 - 이러한 특성을 게으른 학습(Lazy Learning)이라고 함!
+
+
+　
 
 
 ### 단점
@@ -55,7 +102,15 @@
 - 한 가지의 Data를 예측할 때, 모든 Data와의 거리를 계산 -> 속도가 느리고, 메모리 사용 多
 - 예측 값이 주변 정보에 의해서 많이 편향될 가능성 있음(미리 학습된 모델이 아니라 가까운 이웃 Data로만 예측하기 때문)
 
+
+　
+
+
+　
+
+
 ## 예제) 농구선수의 게임 데이터를 활용한 포지션 예측
+
 
 ### Data 살펴보기
 
@@ -196,6 +251,8 @@ df.value_counts('Pos')
     dtype: int64
 
 
+이쯤에서 사용하는 Data에 대한 간략한 설명을 하자면(책에 있는 표를 그대로 인용하여 설명하자면),
+
 
 | 약어 | 설명 |
 |:----|:----|
@@ -209,17 +266,20 @@ df.value_counts('Pos')
 | BLK | 한 경기 평균 블로킹 성공 횟수 |
 
 
-**포지션 설명**  ~~설명하려면 필요해서...~~
+**포지션 설명**  ~~이후의 과정을 설명하려면 필요해서...~~
 
 
-- C : 센터; **블로킹**, **리바운드** 역할, 공을 바깥으로 빼서 공격 찬스를 만들기도 하고, 골대 근처에서 2점슛으로 득점도 함.
-- SG : 슈팅가드; **3점슛** 등 장거리에서 슛을 해서 점수를 얻는 역할을 함.
+- **C** : 센터; **블로킹**, **리바운드** 역할, 공을 바깥으로 빼서 공격 찬스를 만들기도 하고, 골대 근처에서 2점슛으로 득점도 함.
+- **SG** : 슈팅가드; **3점슛** 등 장거리에서 슛을 해서 점수를 얻는 역할을 함.
 
 
-두 포지션을 구분할 수 있는 속성으로 '블로킹', '리바운드', '3점슛'을 선정.
+두 포지션을 구분할 수 있는 속성으로 **'블로킹'**, **'리바운드'**, **'3점슛'**을 선정.
 
 
-가설일 뿐이니까 가설의 사실을 입증해야 함. -> **데이터 시각화**가 좋은 수단 중 하나!
+하지만, 이렇게 구분할 수 있는 속성을 고른 건 그저 가설일 뿐이니까 가설의 사실을 입증해야 함. -> **데이터 시각화**가 좋은 수단 중 하나!
+
+
+따라서 각각의 변수에 대해 관계를 알아보기 위해서 간단한 산점도를 그려보았다.
 
 
 ```python
@@ -237,22 +297,11 @@ sns.lmplot('STL', '2P', data = df, fit_reg = False, # True인 경우 추세선�
 plt.title('STL and 2P in 2d Plane')
 ```
 
-    /usr/local/lib/python3.7/site-packages/seaborn/_decorators.py:43: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
-      FutureWarning
 
-
-
-
-
-    Text(0.5, 1.0, 'STL and 2P in 2d Plane')
-
-
-
-
-    
 ![png](/post_images/machine_learning_kNN/output_9_2.png)
     
 
+　
 
 
 ```python
@@ -270,22 +319,11 @@ sns.lmplot('AST', '2P', data = df, fit_reg = False, # True인 경우 추세선�
 plt.title('AST and 2P in 2d Plane')
 ```
 
-    /usr/local/lib/python3.7/site-packages/seaborn/_decorators.py:43: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
-      FutureWarning
 
-
-
-
-
-    Text(0.5, 1.0, 'AST and 2P in 2d Plane')
-
-
-
-
-    
 ![png](/post_images/machine_learning_kNN/output_10_2.png)
     
 
+　
 
 
 ```python
@@ -303,22 +341,11 @@ sns.lmplot('BLK', '3P', data = df, fit_reg = False, # True인 경우 추세선�
 plt.title('BLK and 3P in 2d Plane')
 ```
 
-    /usr/local/lib/python3.7/site-packages/seaborn/_decorators.py:43: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
-      FutureWarning
-
-
-
-
-
-    Text(0.5, 1.0, 'BLK and 3P in 2d Plane')
-
-
-
-
     
 ![png](/post_images/machine_learning_kNN/output_11_2.png)
     
 
+　
 
 
 ```python
@@ -336,29 +363,26 @@ sns.lmplot('TRB', '3P', data = df, fit_reg = False, # True인 경우 추세선�
 plt.title('TRB and 3P in 2d Plane')
 ```
 
-    /usr/local/lib/python3.7/site-packages/seaborn/_decorators.py:43: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
-      FutureWarning
-
-
-
-
-
-    Text(0.5, 1.0, 'TRB and 3P in 2d Plane')
-
-
-
-
     
 ![png](/post_images/machine_learning_kNN/output_12_2.png)
-    
 
 
-4가지 모두 Data의 구분이 확실하지 않음(경계가 너무 근접해서 분류하기 모호) -> 가설이 타당해보임!
+　
+
+
+4가지 그래프 모두를 보면 알 수 있듯이, Data의 구분이 확실하지 않음(경계가 너무 근접해서 분류하기 모호) -> 가설이 타당해보임!
+
+
+　
+
+
+　
+
 
 ### Data 다듬기
 
 
-분류하는데 도움이 되지 않는 특징('2점슛(2P)', '어시스트(AST)', '스틸(STL)')은 제거
+분류하는데 도움이 되지 않는 특징('2점슛(2P)', '어시스트(AST)', '스틸(STL)')은 제거(`drop()`함수를 이용)
 
 
 ```python
@@ -446,26 +470,25 @@ df.head()
 </div>
 
 
+　
+
+
+　
+
 
 ### Data 나누기
 
 
-사이킷런의 'train_test_split'을 이용하여 학습 Data와 테스트 Data로 분리.
+사이킷런의 `train_test_split()`을 이용하여 학습 Data와 테스트 Data로 분리.
 
 
 ```python
 from sklearn.model_selection import train_test_split
-```
 
-
-```python
 train, test = train_test_split(df, test_size = 0.2)  # 테스트 Data의 비율이 20%가 되도록 설정
 
 # 'test_size = 0.2' = 'train_size = 0.8'
-```
 
-
-```python
 type(train)  # split한 Data의 type은 Pandas의 DataFrame
 ```
 
@@ -516,12 +539,20 @@ test.info()  # 20개의 Data
 
 train 변수에는 train Data가, test 변수에는 test Data가 원래의 df에서 각각 80%, 20%의 비율로 나누어졌음.
 
+
+　
+
+
+　
+
+
 ### 최적의 'k'값 찾기
+
 
 방법은 여러가지가 있음!
 
 
-1. `train_test_split()`을 이용해 Data 나눔 -> 검증 Data의 레이블 vs kNN 알고리즘 모델 예측값 비교
+1. `train_test_split()`을 이용해 Data 나눔 -> (검증 Data의 레이블) vs (kNN 알고리즘 모델 예측값) 비교
 2. 사이킷런의 `cross_val_score()`을 이용 (**책에서는 이 방법을 이용함.**)
 
 
@@ -531,11 +562,11 @@ train 변수에는 train Data가, test 변수에는 test Data가 원래의 df에
 이때 교차 검증은 **'k-fold 교차 검증'**!
 
 
-> 'k-fold' 교차 검증이란,
+> **'k-fold' 교차 검증**이란,
 >> 기존 Data를 k개로 나누고, k개로 나눠진 Data를 모두 검증 Data로 한 번씩 사용함. 이렇게 k번 검증을 하고 이때의 정확도들을 평균내는 방식.
 
 
-
+　
 
 
 ```python
@@ -604,23 +635,17 @@ plt.show()
 
 
 ```python
-type(cross_validation_scores)
-```
-
-
-
-
-    list
-
-
-
-
-```python
 k = k_list[cross_validation_scores.index(max(cross_validation_scores))]
 print('The best number of k : {}'.format(k))
 ```
 
     The best number of k : 9
+
+
+　
+
+
+　
 
 
 ### 모델 테스트
@@ -793,4 +818,5 @@ comparison
 
 
 랜덤으로 테스트 Data와 훈련 Data가 나누어지다 보니 그런 것 같다.
+
 
