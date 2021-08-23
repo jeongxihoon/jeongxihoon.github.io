@@ -10,7 +10,7 @@ toc_sticky: true
 
 
 -------------------------------
-<p align="center"><img src="post_images/About_Me_profile_image1.jpg" width="480px" height="480px" title="About_me_profile-pic"/></p>
+<p align="center"><img src="/post_images/About_Me_profile_image1.jpg" width="480px" height="480px" title="About_me_profile-pic"/></p>
 
 
 > 정지훈, 사진은 입대 후 첫 휴가때 학교에서 찍은 사진이다.
