@@ -1,6 +1,46 @@
-# [4.3] 서포트 벡터 머신 (Support Vector Machine, SVM) 알고리즘
+---
+title: "[Machine Learning] 서포트 벡터 머신(SVM) 알고리즘으로 농구선수 포지션 예측하기!"
+excerpt: "서포트 벡터 머신(Support Vector Machine, SVM) 알고리즘과 농구선수 게임 Data를 이용하여 농구선수 포지션을 예측해보았다."
 
-- 지도학습 알고리즘 > '분류'에 이용
+categories:
+  - Machine Learning
+
+tags:
+  - Python
+  - Machine Learning
+  - SVM
+  - scikit-learn
+
+comments: true
+
+toc: true
+toc_sticky: true
+
+date: 2021-08-25
+last_modified_at: 2021-08-25
+---
+
+
+이전 포스트에서는 k-최근접 이웃(k-NN) 알고리즘으로 농구선수 포지션을 예측했다.
+
+
+이번 포스트에서는 동일한 농구선수 게임 Data를 다른 알고리즘을 이용해서 농구선수 포지션을 예측해보았다.
+
+
+이번에 사용한 알고리즘은 '서포트 벡터 머신(Support Vector Machin, SVM)' 알고리즘이다.
+
+
+SVM 알고리즘도 k-NN 알고리즘과 같은 대표적인 지도학습(Supervised Learning) 알고리즘으로써 데이터 분류(Classification)에 이용된다.
+
+
+SVM 알고리즘에 대한 내 나름의 설명을 해보자면 다음과 같다.
+
+
+　
+
+
+　
+
 
 ## 이론
 
@@ -8,10 +48,16 @@
 > Data의 특징을 벡터로 표현하고, 이를 가장 잘 분류할 수 있는 '결정 경계'를 찾는 알고리즘
 
 
+　
+
+
 ### 사용되는 용어 정리
 
 
 SVM 알고리즘에서 사용되는 기본적인 용어들에 대해서 정리해보도록 하겠다.
+
+
+　
 
 
 #### * 결정 경계(Decision Boundary)
@@ -118,6 +164,13 @@ Data를 표현한 벡터 공간에서 무조건 결정 경계를 구할 수는 �
 
 - 감마 값을 크게 하면... -> 표준편차가 작아짐 -> 결정 경계가 작아짐 -> 경계가 구부러짐
 
+
+　
+
+
+　
+
+
 ## 장/단점
 
 
@@ -147,6 +200,21 @@ Data를 표현한 벡터 공간에서 무조건 결정 경계를 구할 수는 �
 단, 파라미터의 후보들은 사용자가 입력해야함. 이렇게 입력받은 파라미터를 모두 조합해서 최적의 값의 조합을 찾아내는 것!
 
 
+　
+
+
+　
+
+
+## 예제) 농구선수의 게임 데이터를 활용한 포지션 예측
+
+
+### Data 불러오기
+
+
+이전 k-NN 알고리즘에 대한 예제에서 사용한 Data를 그대로 이용할 것이기 때문에 코드를 이용해서 Data를 그대로 가져왔다.
+
+
 ```python
 # [4.2]에서 사용했던 농구선수 Data를 그대로 이용하기 위한 작업
 
@@ -163,6 +231,30 @@ df.drop(['2P', 'AST', 'STL'], axis = 1, inplace = True)
 
 train, test = train_test_split(df, test_size = 0.2)
 ```
+
+
+Data를 불러와서 학습 Data와 테스트 Data로 분류하여 각각의 변수에 저장하는 것까지 완료했다.
+
+
+　
+
+
+　
+
+
+### 최적의 SVM Parameter 찾기
+
+
+SVM 알고리즘을 활용하기에 앞서, 커널 트릭 중에서 본 예제는 가우시안 RBF 커널을 사용한다.
+
+
+본 커널을 사용하기 위해서는 '비용(C)', '감마(gamma)' 이렇게 두 가지 Parameter를 조절해야한다.
+
+
+따라서 최적의 결과를 보여주는 비용 값과 감마 값을 찾기 위해서 `GridSearchCV()` 함수를 사용했다.
+
+
+코드는 다음과 같다.
 
 
 ```python
@@ -202,7 +294,22 @@ clf = svc_param_selection(X_train, y_train.values.ravel(), 10)
     {'C': 0.1, 'gamma': 1, 'kernel': 'rbf'}
 
 
+코드를 돌려본 결과, 최적의 Parameter 값으로 '비용(C)'은 0.1, '감마(gamma)'는 1의 값이 나온 것을 확인할 수 있다.
+
+
+물론, 학습 Data를 랜덤으로 지정했기 때문에, 코드를 돌릴 때마다 값은 달라질 수 있다.
+
+
+　
+
+
+　
+
+
 ### 결정 경계 시각화하기
+
+
+위에서 구한 최적의 Parameter가 과연 진짜 최적의 Parameter인지 시각적으로 확인하기 위해서 다음과 같은 코드를 작성하였다.
 
 
 ```python
@@ -267,8 +374,25 @@ for (k, (C, gamma, clf)) in enumerate(classifiers):  # enumerate 함수 -> 순�
 ![png](post_images/machine_learning_SVM/output_9_1.png)
     
 
+위는 코드를 실행해서 나온 결과이다. 정중앙에 있는 그래프가 최적의 Parameter로 얻은 SVM 모델이다.
+
+
+시각적으로 확인할 수 있듯이, Parameter가 달라짐에 따라 결정 경계의 곡률이 다르다는 것을 알 수 있다.
+
+
+　
+
+
+　
+
 
 ### 모델 테스트
+
+
+최적의 Parameter 조합을 시각적으로도 확인했으니, 이젠 본격적으로 학습된 모델을 통해 예측값을 확인할 단계이다.
+
+
+학습된 모델을 통해 예측값을 구하는 코드는 다음과 같다.
 
 
 ```python
@@ -279,12 +403,12 @@ y_test = test[['Pos']]
 
 y_true, y_pred = y_test, clf.predict(X_test)
 # 'predict()' 메서드를 통해 테스트 Data 예측
-# 실제 값은 'y_true'에, 모델의 예측 값은 'y_pred'에 저장
+# 실제값은 'y_true'에, 모델의 예측값은 'y_pred'에 저장
 
 
 print(classification_report(y_true, y_pred))  # 주요 측정 항목들을 텍스트로 보여줌.
 print()
-print("accuracy : {}".format(accuracy_score(y_true, y_pred)))  # 실제 값과 예측 값을 비교해서 정확도를 보여줌.
+print("accuracy : {}".format(accuracy_score(y_true, y_pred)))  # 실제값과 예측값을 비교해서 정확도를 보여줌.
 ```
 
                   precision    recall  f1-score   support
@@ -299,6 +423,14 @@ print("accuracy : {}".format(accuracy_score(y_true, y_pred)))  # 실제 값과 �
     
     accuracy : 0.95
 
+
+각각의 Position마다의 정밀도(Precision), 재현율(Recall), F1 점수(F1-Score), 클래스별 데이터 개수(Support)값을 확인할 수 있다.
+
+
+　
+
+
+실제값과 예측값을 표로 비교하자면 다음과 같다.
 
 
 ```python
@@ -438,3 +570,19 @@ comparison
 </div>
 
 
+　
+
+
+　
+
+
+## 마무리
+
+
+동일한 Data를 2개의 다른 알고리즘으로 분류해보았다. 서포트 벡터 머신(SVM)이 왠지 더 수학적으로 정확하게 분류하는 것 같달까...?
+
+
+아무튼 그렇고,,, 다음은 '의사결정 트리(Decision Tree)'이다.
+
+
+다음 포스트로 찾아오겠다!
