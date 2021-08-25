@@ -24,6 +24,9 @@ last_modified_at: 2021-08-25
 이전 포스트에서는 k-최근접 이웃(k-NN) 알고리즘으로 농구선수 포지션을 예측했다.
 
 
+[이전 포스트](https://jeongxihoon.github.io/machine%20learning/machine_learning_kNN/)
+
+
 이번 포스트에서는 동일한 농구선수 게임 Data를 다른 알고리즘을 이용해서 농구선수 포지션을 예측해보았다.
 
 
