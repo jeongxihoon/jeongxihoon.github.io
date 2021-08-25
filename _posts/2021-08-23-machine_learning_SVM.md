@@ -374,7 +374,7 @@ for (k, (C, gamma, clf)) in enumerate(classifiers):  # enumerate 함수 -> 순�
 ```
 
     
-![png](post_images/machine_learning_SVM/output_9_1.png)
+![png](/post_images/machine_learning_SVM/output_9_1.png)
     
 
 위는 코드를 실행해서 나온 결과이다. 정중앙에 있는 그래프가 최적의 Parameter로 얻은 SVM 모델이다.
