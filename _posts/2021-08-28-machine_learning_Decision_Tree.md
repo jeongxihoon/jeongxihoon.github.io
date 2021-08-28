@@ -1,6 +1,46 @@
-# [4.4] 의사결정 트리 (Decision Tree) 알고리즘
+---
+title: "[Machine Learning] 의사결정 트리(Decision Tree) 알고리즘으로 서울 지역 다중 분류하기!"
+excerpt: "의사결정 트리(Decision Tree) 알고리즘을 이용하여 서울 지역(강동, 강서, 강남, 강북)을 다중 분류해보았다."
 
-- 지도학습 알고리즘 > '분류' 및 '회귀'에 이용
+categories:
+  - Machine Learning
+
+tags:
+  - Python
+  - Machine Learning
+  - Supervised Learning
+  - Classification
+  - Regression
+  - Decision Tree
+  - scikit-learn
+
+comments: true
+
+toc: true
+toc_sticky: true
+
+date: 2021-08-28
+last_modified_at: 2021-08-28
+---
+
+
+오늘 소개할 알고리즘은 **의사결정 트리(Decision Tree) 알고리즘**이다.
+
+
+이 알고리즘과 서울 지역의 위도, 경도 Data를 활용하여 서울 지역을 강북, 강남, 강동, 강서 총 4개의 지역으로 다중 분류하는 예제를 실습해보았다!
+
+
+의사결정 트리 알고리즘은 Data 분류(Classification)와 회귀(Regression)에 사용되는 지도학습(Supervised Learning) 알고리즘이다.
+
+
+의사결정 트리 알고리즘에 대한 내 나름의 설명을 해보도록 하겠다!
+
+
+　
+
+
+　
+
 
 ## 이론
 
@@ -14,7 +54,19 @@
 상위 노드에는 영향력이 큰 특징을, 하위 노드에는 영향력이 작은 특징을 위치시킨다. 결국 이렇게 '**영향력이 작고 크다**'라는 것을 판단하려면 수치적인 결과가 필요하다. 그래서 사용하는 것이 '**정보 이론(Information Theory)**'의 '**엔트로피(Entropy)**' 개념이다!
 
 
+　
+
+
+　
+
+
 ### 사용되는 용어/개념 정리
+
+
+의사결정 트리 알고리즘에서 사용되는 용어와 개념들에 대해서 간단히 알아보도록 하자!
+
+
+　
 
 
 #### * 엔트로피(Entropy)
@@ -106,6 +158,13 @@ Entropy = $\sum_{c \in X} P(c)E(c)$
     - $P$, $Q$ : 해당 노드로 분리되는 Data의 비율
 2. 특징에 대한 지니 계수를 구함.(두 노드의 지니 계수를 더하면 됨)
 
+
+　
+
+
+　
+
+
 ## 장/단점
 
 
@@ -124,7 +183,15 @@ Entropy = $\sum_{c \in X} P(c)E(c)$
 
 - 과대적합(Overfitting)의 위험이 높다.
 
+
+　
+
+
+　
+
+
 ## 예제) 서울 지역(강동, 강서, 강남, 강북) 다중 분류하기
+
 
 ### Data 준비
 
@@ -195,6 +262,16 @@ test_df = pd.DataFrame(dong_dict_list)
 test_df = test_df[['dong', 'longitude', 'latitude', 'label']]
 ```
 
+
+이번 실습 예제에서 사용할 Data들을 Pandas의 DataFrame 형태로 변수에 저장하였다.
+
+
+이 Data의 Index에 대한 설명은 다음과 같다.
+
+
+　
+
+
 #### Data에 대한 설명
 
 
@@ -202,6 +279,9 @@ test_df = test_df[['dong', 'longitude', 'latitude', 'label']]
 - dong : 동(대치동, 서초동 등)
 - latitude : 위도, longitude : 경도
 - label : 한강 기준으로 동, 서, 남, 북으로 구분한 명칭(강동, 강서, 강남, 강북)
+
+
+`value_counts()`함수를 통해서 학습 Data와 테스트 Data의 label 정보를 확인해보면 다음과 같다.
 
 
 ```python
@@ -234,80 +314,16 @@ test_df.label.value_counts()
     Name: label, dtype: int64
 
 
+　
 
 
-```python
-train_df.head()
-```
+　
 
 
+위도와 경도 정보를 가지고 학습 Data의 위치 정보를 시각화해보면 다음과 같다.
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>district</th>
-      <th>longitude</th>
-      <th>latitude</th>
-      <th>label</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Gangseo-gu</td>
-      <td>126.849500</td>
-      <td>37.551000</td>
-      <td>Gangseo</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Yangcheon-gu</td>
-      <td>126.855396</td>
-      <td>37.524240</td>
-      <td>Gangseo</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Guro-gu</td>
-      <td>126.887400</td>
-      <td>37.495400</td>
-      <td>Gangseo</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Geumcheon-gu</td>
-      <td>126.902000</td>
-      <td>37.451900</td>
-      <td>Gangseo</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Mapo-gu</td>
-      <td>126.908728</td>
-      <td>37.560229</td>
-      <td>Gangseo</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
+2차원 평면의 그래프로 나타내기 위해 `matplotlib`와 `seaborn` 모듈을 이용하였다.
 
 
 ```python
@@ -323,27 +339,20 @@ sns.lmplot('longitude', 'latitude', data = train_df, fit_reg = False,
 plt.title("District visualization in 2d plane")
 ```
 
-    /usr/local/lib/python3.7/site-packages/seaborn/_decorators.py:43: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
-      FutureWarning
-
-
-
-
-
-    Text(0.5, 1.0, 'District visualization in 2d plane')
-
-
-
-
     
-![png](output_10_2.png)
+![png](post_images/machine_learning_Decision_Tree/output_10_2.png)
     
+
+　
+
+
+　
 
 
 ### Data 전처리
 
 
-학습 및 테스트에 필요 없는 특징(Column)들을 Data에서 제거하는 전처리 과정을 진행했다.
+학습 및 테스트에 필요 없는 특징(Column)들을 Data에서 제거하는 전처리 과정(Preprocessing)을 진행했다.
 
 
 학습 및 테스트에 구, 동 이름은 필요하지 않기 때문에 `drop()`함수를 이용하여 제거했다.
@@ -360,10 +369,20 @@ X_test = test_df[['longitude', 'latitude']]
 y_test = test_df[['label']]
 ```
 
+
+　
+
+
+　
+
+
 ### 모델 학습
 
 
-사이킷런의 의사결정 트리 모드를 이용하여 의사결정 트리 모델을 학습하였다.
+사이킷런(scikit-learn)의 의사결정 트리 모드를 이용하여 의사결정 트리 모델을 학습하였다.
+
+
+코드는 다음과 같다.
 
 
 ```python
@@ -382,14 +401,20 @@ clf = tree.DecisionTreeClassifier(random_state = 35).fit(X_train, y_encoded)
 # 숫자를 지정함으로써 동일하게 랜덤한 값을 생성시킬 수 있도록 하는 것
 ```
 
-    /usr/local/lib/python3.7/site-packages/sklearn/utils/validation.py:72: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
-      return f(**kwargs)
+
+　
+
+
+　
 
 
 ### 의사결정 트리 모델의 결정 경계 시각화
 
 
-학습한 의사결정 트리 모델의 결정 경계가 어떻게 보여지는 지 시각화하는 코드이다.
+위에서 학습한 의사결정 트리 모델의 결정 경계가 어떻게 보여지는지 시각화하는 코드이다.
+
+
+코드를 함수로 정의해서 사용하기 편리하도록 하였다.
 
 
 ```python
@@ -437,19 +462,20 @@ def display_decision_surface(clf, X, y):
 display_decision_surface(clf, X_train, y_encoded)
 ```
 
-
     
-![png](output_16_0.png)
+![png](post_images/machine_learning_Decision_Tree/output_16_0.png)
     
 
+위의 그래프를 살펴보자!
 
-'강북(빨간색)'과 '강동(노란색)'에 해당하는 Data를 보게 되면, 지나치게 학습 Data에 의존하여 학습했다고 볼 수 있다. 즉, 과대적합(Overfitting)이 된 것이다.
+
+그래프에서 '강북(빨간색)'과 '강동(노란색)'에 해당하는 Data를 보게 되면, 지나치게 학습 Data에 의존하여 학습했다고 볼 수 있다. 즉, 과대적합(Overfitting)이 된 것이다.
 
 
 실제 저 지역은 저렇게 경계가 나눠지지 않는다.
 
 
-따라서 처음에 `DecisionTreeClassifier()` 객체를 만들 때, 별도의 Parameter들을 추가적으로 지정하므로써 과대적합을 줄일 수 있다.
+따라서 처음에 `DecisionTreeClassifier()` 객체를 만들 때, 별도의 Parameter들을 추가적으로 지정함으로써 과대적합을 줄일 수 있다.
 
 
 ```python
@@ -463,17 +489,30 @@ display_decision_surface(clf, X_train, y_encoded)
 
 
     
-![png](output_18_0.png)
+![png](post_images/machine_learning_Decision_Tree/output_18_0.png)
     
 
 
-#### Parameter에 대한 설명
+#### 모델에 사용한 Parameter 설명
 
 
 - max_depth : Tree의 최대 한도 깊이
 - min_samples_split : 자식 노드를 갖기 위한 최소한의 Data 개수
 - min_samples_leaf : 리프 노드(최하위의 노드)의 최소 Data 개수
 - random_state : 동일한 정수를 입력하면 학습 결과를 항상 같게 만들어주는 파라미터
+
+
+Parameter를 사용해서 모델을 학습한 결과와 사용하지 않은 결과를 비교해보자.
+
+
+Parameter를 사용했을 때가 아닌 모델보다 서울 지역을 분류하려는 예제의 목표에 더 적합하다는 것을 확인할 수 있다.
+
+
+　
+
+
+　
+
 
 ### 모델 테스트
 
@@ -491,6 +530,11 @@ print('accuracy : {}'.format(accuracy_score(y_test.values.ravel(), le.classes_[p
 
     accuracy : 1.0
 
+
+정확도가 1.0(100%)인 것을 확인할 수 있다.
+
+
+결과를 표(DataFrame)로 확인하면 다음과 같다.
 
 
 ```python
@@ -630,8 +674,8 @@ comparison
 </div>
 
 
+　
 
 
-```python
+　
 
-```
