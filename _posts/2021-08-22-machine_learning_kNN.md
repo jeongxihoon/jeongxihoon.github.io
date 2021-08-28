@@ -8,6 +8,8 @@ categories:
 tags:
   - Python
   - Machine Learning
+  - Supervised Learning
+  - Classification
   - kNN
   - scikit-learn
 
