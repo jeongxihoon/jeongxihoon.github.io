@@ -340,7 +340,7 @@ plt.title("District visualization in 2d plane")
 ```
 
     
-![png](post_images/machine_learning_Decision_Tree/output_10_2.png)
+![png](/post_images/machine_learning_Decision_Tree/output_10_2.png)
     
 
 　
@@ -463,7 +463,7 @@ display_decision_surface(clf, X_train, y_encoded)
 ```
 
     
-![png](post_images/machine_learning_Decision_Tree/output_16_0.png)
+![png](/post_images/machine_learning_Decision_Tree/output_16_0.png)
     
 
 위의 그래프를 살펴보자!
@@ -489,7 +489,7 @@ display_decision_surface(clf, X_train, y_encoded)
 
 
     
-![png](post_images/machine_learning_Decision_Tree/output_18_0.png)
+![png](/post_images/machine_learning_Decision_Tree/output_18_0.png)
     
 
 
