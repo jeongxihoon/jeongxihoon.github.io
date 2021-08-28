@@ -16,6 +16,8 @@ tags:
 
 comments: true
 
+mathjax: true
+
 toc: true
 toc_sticky: true
 
