@@ -1,11 +1,55 @@
-# [4.5] 나이브 베이즈 (Naïve Bayes) 알고리즘
+---
+title: "[Machine Learning] 나이브 베이즈(Naive Bayes) 알고리즘을 활용해 붓꽃 분류하기!"
+excerpt: "나이브 베이즈(Naive Bayes) 알고리즘 중에서 가우시안 나이브 베이즈(Gaussian Naive Bayes)를 이용하여 붓꽃의 종류를 분류해보았다."
 
-- 지도학습 알고리즘 > '분류'에 이용; 확률 기반 알고리즘
+categories:
+  - Machine Learning
+
+tags:
+  - Python
+  - Machine Learning
+  - Supervised Learning
+  - Classification
+  - Naive Bayes
+  - scikit-learn
+
+comments: true
+
+mathjax: true
+
+toc: true
+toc_sticky: true
+
+date: 2021-09-01
+last_modified_at: 2021-09-01
+---
+
+
+오늘 소개할 알고리즘은 **나이브 베이즈(Naive Bayes) 알고리즘**이다.
+
+
+그 중에서도 이번엔 **가우시안 나이브 베이즈(Gaussian Naive Bayes) 알고리즘**을 이용하여 붓꽃(iris)의 종류를 분류하는 예제를 실습해보았다!
+
+
+그 외의 다항 분포 나이브 베이즈(Multinomial Naive Bayes), 베르누이 나이브 베이즈(Bernoulli Naive Bayes) 알고리즘에 대한 예제는 다음 포스트에서 다룰 예정이다.
+
+
+일단 전체적인 나이브 베이즈 알고리즘에 대해서 설명해보도록 하겠다.
+
+
+　
+
+
+　
+
 
 ## 이론
 
 
 > Data를 단순(naive)하게 독립적인 사건으로 가정하고, 베이즈 이론에 대입시켜 가장 높은 확률의 레이블로 Data를 분류하는 알고리즘
+
+
+즉, 이 알고리즘은 **확률**에 기반을 두고 있다!
 
 
 　
@@ -14,7 +58,13 @@
 ### 사용되는 용어/개념 정리
 
 
-#### 베이즈 이론 (Bayes' theorem)
+나이브 베이즈 알고리즘에서 사용되는 개념과 용어들에 대해서 간단히 알아보도록 하자!
+
+
+　
+
+
+#### 베이즈 이론 (Bayes' Theorem)
 
 
 > $P(A|B) = \frac{P(B|A)P(A)}{P(B)}$
@@ -104,6 +154,12 @@ $y = argmax_y P(y)\prod_{i=1}^n P(x_i|y)$
 #### 여러가지 나이브 베이즈 모델
 
 
+여러가지 나이브 베이즈 모델 중, 대표적인 3가지 정도를 소개하면 다음과 같다.
+
+
+　
+
+
 ##### 가우시안 나이브 베이즈 (Gaussian Naive Bayes)
 
 
@@ -176,7 +232,15 @@ $y = argmax_y P(y)\prod_{i=1}^n P(x_i|y)$
 
 - 나이브 가정이 '문서 분류'에는 적합할지 몰라도 다른 분류 모델에서는 제약이 될 수 있음.
 
+
+　
+
+
+　
+
+
 ## 예제1) 가우시안 나이브 베이즈를 활용한 붓꽃 분류
+
 
 ### Data 준비
 
@@ -278,6 +342,8 @@ df.head()
 </div>
 
 
+　
+
 
 #### DataFrame Columns 설명
 
@@ -288,7 +354,20 @@ df.head()
 - petal width : 꽃잎 너비
 - target : 붓꽃(irsi)의 종류(setosa, versicolor, virginica)
 
+
+　
+
+
+　
+
+
 ### Data 시각화
+
+
+iris Data가 어떻게 분포되어 있는지 시각화를 해보았다.
+
+
+iris의 종류에 따라서 그래프를 그리기 위해 다음과 같이 DataFrame을 나누었다.
 
 
 ```python
@@ -308,9 +387,25 @@ b = setosa_df['sepal length (cm)'].plot(kind = 'kde', ax = ax,
 
 
     
-![png](output_10_0.png)
+![png](/post_images/machine_learning_NB/output_10_0.png)
     
 
+대표적으로 한 가지의 그래프를 보자면 위와 같다.
+
+
+위는 'Setosa'의 꽃받침 길이 분포를 나타낸 그래프이다.
+
+
+책에서는 그래프 하나만 코드를 대표적으로 보여주고, 나머지는 그림으로만 보여주었다.
+
+
+하지만, 블로그에 나머지 그래프 그림도 보여주려면 결국 출력을 해야한다.
+
+
+따라서 필요한 그래프를 한번에 그리는 함수 코드를 짜보았다.
+
+
+코드는 다음과 같다.
 
 
 ```python
@@ -346,9 +441,28 @@ plot_drawing_func(iris_df_list)
 
 
     
-![png](output_11_0.png)
+![png](/post_images/machine_learning_NB/output_11_0.png)
     
 
+행(row) 맨 위부터 순서대로 'Setosa', 'Versicolor', 'Virginica'이고,
+
+
+열(column) 맨 왼쪽부터 순서대로 'sepal length(꽃받침 길이)', 'speal width(꽃받침 너비)', 'petal length(꽃잎 길이)', 'petal width(꽃잎 너비)'이다.
+
+
+그래프에서 볼 수 있듯이, Data의 모든 특징들이 정규분포에 가까운 분포를 가진다.
+
+
+따라서 Data의 특징이 정규분포를 따른다는 가정하에 계산을 하는 '가우시안 나이브 베이즈 모델'로 에제를 진행했다.
+
+
+　
+
+
+　
+
+
+### Data 나누기
 
 
 ```python
@@ -358,17 +472,25 @@ X_train, X_test, y_train, y_test = train_test_split(dataset.data, dataset.target
 ```
 
 
+iris Data의 80%는 학습 Data, 20%는 테스트 Data로 나누었다.
+
+
+　
+
+
+　
+
+
+### 모델 학습 및 테스트
+
+
+Split한 Data를 바탕으로 가우시안 나이브 베이즈 모델을 학습 및 테스트 하였다.
+
+
 ```python
 model = GaussianNB()
 model.fit(X_train, y_train)
 ```
-
-
-
-
-    GaussianNB()
-
-
 
 
 ```python
@@ -391,3 +513,26 @@ print(accuracy_score(expected, predicted))  # 정확도
     
     0.9333333333333333
 
+
+모델 테스트 결과, 약 93%의 정확도를 보였다.
+
+
+　
+
+
+　
+
+
+### 마무리
+
+
+이로써 첫 번째 예제인 '가우시안 나이브 베이즈 모델을 통한 붓꽃(iris) 분류'를 마쳤다.
+
+
+다음 포스트에서는 '베르누이 나이브 베이즈 모델을 활용한 스팸 메일 분류', '다항분포 나이브 베이즈 모델을 활용한 영화 리뷰 분류' 예제를 함께 다룰 예정이다.
+
+
+나이브 베이즈 모델에 대한 예제가 많아서 나누어서 올리는 것이다.
+
+
+그럼, 다음 포스트에서 보도록 하겠다!
