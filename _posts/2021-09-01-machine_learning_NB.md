@@ -67,7 +67,7 @@ last_modified_at: 2021-09-01
 #### 베이즈 이론 (Bayes' Theorem)
 
 
-> $P(A | B) = \frac{P(B | A)P(A)}{P(B)}$
+> $P(A | B) = \cfrac{P(B | A)P(A)}{P(B)}$
 
 
 - $P(A | B)$ : 사건 B가 일어났을 때 사건 A가 일어날 확률
@@ -117,7 +117,7 @@ Data의 특징이 늘어나면, **결합확률**을 계산해야한다!
 n개의 특징을 가진 Data에 대한 나이브 베이즈 공식을 일반화하면 다음과 같다.
 
 
-$P(y | x_1,…,x_n) = \frac{P(x_1 | y)P(x_2 | y)…P(x_n | y)P(y)}{P(x_1)P(x_2)…P(x_n)}$
+$P(y | x_1,…,x_n) = \cfrac{P(x_1 | y)P(x_2 | y)…P(x_n | y)P(y)}{P(x_1)P(x_2)…P(x_n)}$
 
 
 나이브 가정을 통해서 모든 특징들을 **독립적인 사건**으로 계산하는 것이다.
@@ -126,7 +126,7 @@ $P(y | x_1,…,x_n) = \frac{P(x_1 | y)P(x_2 | y)…P(x_n | y)P(y)}{P(x_1)P(x_2)�
 여기서 곱을 나타내는 부분을 더 간단하게 줄이면,
 
 
-$P(y | x_1,…,x_n) = \frac{P(y)\prod_{i=1}^n P(x_i | y)}{P(x_1)P(x_2)…P(x_n)}$
+$P(y | x_1,…,x_n) = \cfrac{P(y)\prod_{i=1}^n P(x_i | y)}{P(x_1)P(x_2)…P(x_n)}$
 
 
 - $y$ : 레이블
