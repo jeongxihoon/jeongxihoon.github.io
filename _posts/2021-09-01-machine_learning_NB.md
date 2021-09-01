@@ -67,7 +67,7 @@ last_modified_at: 2021-09-01
 #### 베이즈 이론 (Bayes' Theorem)
 
 
-> $P(A | B) = \cfrac{P(B | A)P(A)}{P(B)}$
+> $P(A \mid B) = \cfrac{P(B \mid A)P(A)}{P(B)}$
 
 
 - $P(A | B)$ : 사건 B가 일어났을 때 사건 A가 일어날 확률
