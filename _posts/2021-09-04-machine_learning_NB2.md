@@ -380,7 +380,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score
 ```
 
-### Data 가공하기
+### Data 가져오기
 
 
 영화 리뷰를 보고 긍정적(positive)인지, 부정적(negative)인지 분류하는 예제이다.
