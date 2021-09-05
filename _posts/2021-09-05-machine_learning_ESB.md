@@ -1,4 +1,49 @@
-# [4.6] 앙상블 (Ensemble) 기법
+---
+title: "[Machine Learning] 앙상블(Ensemble) 기법을 활용해 손글씨 분류하기!"
+excerpt: "앙상블(Ensemble) 기법인 랜덤 포레스트(Random Forest)와 배깅(Bagging), 그리고 손글씨 데이터셋을 이용하여 손글씨를 분류해보았다."
+
+categories:
+  - Machine Learning
+
+tags:
+  - Python
+  - Machine Learning
+  - Supervised Learning
+  - Classification
+  - Ensemble
+  - Bagging
+  - Boosting
+  - Randome Forest
+  - scikit-learn
+
+comments: true
+
+mathjax: true
+
+toc: true
+toc_sticky: true
+
+date: 2021-09-05
+last_modified_at: 2021-09-05
+---
+
+
+오늘 소개할 알고리즘은 **앙상블(Ensemble) 기법**이다.
+
+
+앙상블 기법은 여러 개의 모델을 조합해서 더 나은 성능을 내도록 하는 기법이다!
+
+
+이번에 앙상블 기법을 이용한 예제에서는 그동안 알아보았던 'k-NN', 'SVM', 'Decision Tree' 알고리즘과 손글씨 데이터셋을 이용하여 손글씨 분류를 해보았다.
+
+
+일단 앙상블 기법에 대해서 설명해보도록 하겠다.
+
+
+　
+
+
+　
 
 
 ## 이론
@@ -10,6 +55,8 @@
 앙상블(Ensemble) 기법에는 크게 배깅(Bagging), 부스팅(Boosting) 이렇게 2가지 방식이 있다.
 
 
+　
+
 
 ## 배깅(Bagging)
 
@@ -20,7 +67,10 @@
 배깅(Bagging)은 부트스트랩(Bootstrap)과 어그리게이팅(Aggregating)의 줄임말이다.
 
 
-배깅은 과대적합이 쉬운 모델에 굉장히 적합한 앙상블 기법이다. 대표적으로 과대적합이 쉬운 '의사결정 트리(Decision Tree)'모델에 많이 사용된다.
+배깅은 과대적합(Overfitting)이 쉬운 모델에 굉장히 적합한 앙상블 기법이다. 대표적으로 과대적합이 쉬운 '의사결정 트리(Decision Tree)'모델에 많이 사용된다.
+
+
+　
 
 
 ### 부트스트랩(Bootstrap)
@@ -57,10 +107,16 @@
 이렇게 중복을 허용해서 나누게 되는 것이다.
 
 
+　
+
+
 ### 어그리게이팅(Aggregating)
 
 
 > 여러 분류 모델이 예측한 값을 '투표'를 통해서 하나의 결론으로 도달하는 과정
+
+
+　
 
 
 #### 하드 보팅(Hard Voting)
@@ -70,6 +126,9 @@
 
 
 만약 숫자를 1 ~ 5로 분류하는 의사결정 트리 5개를 학습했다고 하자. 이때 5개의 결과 중 가장 많이 나온 결과로 예측값을 선정하는 것이다.
+
+
+　
 
 
 #### 소프트 보팅(Soft Voting)
@@ -95,6 +154,13 @@ k개의 모델이 각 레이블로 분류할 확률을 레이블 별로 합산�
 
 의사결정 트리 기법에서 배깅을 사용한 대표적인 알고리즘이다.
 
+
+　
+
+
+　
+
+
 ## 부스팅(Boosting)
 
 
@@ -105,6 +171,9 @@ k개의 모델이 각 레이블로 분류할 확률을 레이블 별로 합산�
 
 
 **부스팅(Boosting)**은 동일한 분류기를 **순차적으로 학습**시켜서 여러 개의 분류기 모델을 만들고, **가중 투표**를 통해 예측값을 얻어내는 기법이다.
+
+
+　
 
 
 ### 순차적 학습
@@ -123,6 +192,9 @@ k개의 모델이 각 레이블로 분류할 확률을 레이블 별로 합산�
 
 
 이 과정을 통해서 부스팅 기법은 동일한 알고리즘을 가지는 여러 개의 분류기를 만들게 되는 것이다.
+
+
+　
 
 
 ### 가중 투표
@@ -178,11 +250,10 @@ k개의 모델이 각 레이블로 분류할 확률을 레이블 별로 합산�
 　
 
 
-
 ## 예제1) 랜덤 포레스트 손글씨 분류
 
 
-MNIST 손글씨 데이터셋 이용
+손글씨 분류를 위한 데이터셋으로 'MNIST 손글씨 데이터셋'을 이용하였다.
 
 
 ```python
@@ -197,6 +268,10 @@ import pandas as pd
 import numpy as np
 ```
 
+
+　
+
+
 ### Data 불러오기
 
 
@@ -206,7 +281,20 @@ features = mnist.data
 labels = mnist.target
 ```
 
+
+　
+
+
+　
+
+
 ### 교차 검증
+
+
+MNIST 손글씨 데이터셋에 대해서 각 모델의 정확도를 알아보기 위해서 교차 검증을 진행하는 함수를 다음과 같이 정의하였다.
+
+
+교차 검증을 10번 수행해서 정확도를 평균을 내는 과정을 10번 반복하도록 함수를 정의한 것이다.
 
 
 ```python
@@ -221,20 +309,34 @@ def cross_validation(classifier, features, labels):
 
 
 ```python
+# 의사결정 트리(Decision Tree) 정확도
+
 dt_cv_scores = cross_validation(tree.DecisionTreeClassifier(),
                                features, labels)
 ```
 
 
 ```python
+# 랜덤 포레스트(Random Forest) 정확도
+
 rf_cv_scores = cross_validation(RandomForestClassifier(),
                                features, labels)
 ```
 
 
-```python
+　
+
+
+　
+
+
 ### 랜덤 포레트스 vs 의사결정 트리의 정확도 시각화
-```
+
+
+위에서 의사결정 트리와 랜덤 포레스트로 검증을 진행하여 정확도를 변수에 각각 저장하였다.
+
+
+이를 쉽게 알아보기 위해서 시각화를 하는 코드이다.
 
 
 ```python
@@ -247,44 +349,46 @@ df = pd.DataFrame.from_dict(dict(cv_list))
 df.plot()
 ```
 
-
-
-
-    <AxesSubplot:>
-
-
-
-
     
-![png](output_13_1.png)
+![png](/post_images/machine_learning_ESB/output_13_1.png)
     
 
+위의 그래프를 보면, 랜덤 포레스트의 성능이 의사결정 트리보다 월등히 높다는 것을 확인할 수 있다.
+
+
+10회 진행한 정확도의 총 평균을 내면 다음과 같다.
 
 
 ```python
+# 의사결정 트리의 정확도 평균
+
 np.mean(dt_cv_scores)
 ```
-
-
 
 
     0.8252430167597765
 
 
-
-
 ```python
+# 랜덤 포레스트의 정확도 평균
+
 np.mean(rf_cv_scores)
 ```
-
-
 
 
     0.9502420856610799
 
 
+　
+
+
+　
+
 
 ## 예제2) 보팅 앙상블 손글씨 분류
+
+
+이번 예제에서는 서로 다른 알고리즘의 모델들을 앙상블해서 손글씨 분류를 진행해보았다.
 
 
 ```python
@@ -300,6 +404,9 @@ from sklearn.metrics import accuracy_score
 ```
 
 
+### Data 불러오기
+
+
 ```python
 mnist = datasets.load_digits()
 features = mnist.data
@@ -308,10 +415,23 @@ labels = mnist.target
 X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size = 0.2)
 ```
 
+
+　
+
+
+　
+
+
 ### 단일 모델의 정확도 측정
 
 
 앙상블 기법을 사용하기 전, 개별 모델(의사결정 트리, kNN, SVM)들 각각의 정확도를 측정해보았다.
+
+
+동일한 조건에의서 정확도 비교를 위해서 모두 동일한 학습 Data를 사용하도록 하였다.
+
+
+(`random_state` 변수를 동일하게 적용)
 
 
 ```python
@@ -349,26 +469,19 @@ print('svm : {}'.format(accuracy_score(y_test, svm_predicted)))
     svm : 0.9333333333333333
 
 
-### 분류값별 확률 확인
+　
 
 
-```python
-svm_proba = svm.predict_proba(X_test)
-print(len(svm_proba))
-print(svm_proba[0:2])
-# print(svm_proba[0].sum())
-```
-
-    360
-    [[6.41560962e-04 2.54455579e-04 3.38139172e-04 1.30236912e-03
-      2.42455584e-04 4.19438691e-03 9.47272363e-05 1.69346686e-04
-      9.52203474e-04 9.91810355e-01]
-     [7.14790085e-04 1.14413089e-03 9.80044946e-01 3.66871386e-03
-      1.68992545e-03 3.72483364e-03 4.34067688e-04 9.24115362e-04
-      5.24511770e-03 2.40935932e-03]]
+　
 
 
 ### 하드 보팅
+
+
+'scikit-learn'의 `VotingClassifier()` 함수를 이용하면 하드 보팅과 소프트 보팅을 구현할 수 있다.
+
+
+따라서 이를 이용하여 하드 보팅과 소프트 보팅 모두 진행하였다.
 
 
 ```python
@@ -381,10 +494,13 @@ accuracy_score(y_test, hard_voting_predicted)
 ```
 
 
-
-
     0.9194444444444444
 
+
+　
+
+
+　
 
 
 ### 소프트 보팅
@@ -400,13 +516,22 @@ accuracy_score(y_test, soft_voting_predicted)
 ```
 
 
-
-
     0.9083333333333333
 
 
+　
+
+
+　
+
 
 ### 단일 모델과 앙상블 모델의 정확도 비교 시각화
+
+
+이렇게 해서 총 5개의 모델로 손글씨 분류를 진행해보았다.
+
+
+5개의 개별 모델에 대한 정확도를 손쉽게 비교하기 위해서 bar 그래프를 그렸다.
 
 
 ```python
@@ -434,8 +559,32 @@ plt.xticks(x, ['decistion tree', 'knn', 'svm', 'hard voting', 'soft voting'])
 plt.show()
 ```
 
-
     
-![png](output_28_0.png)
+![png](/post_images/machine_learning_ESB/output_28_0.png)
     
 
+실행 결과, 'SVM' 모델이 가장 높은 정확도를 보여주는 것을 확인할 수 있다.
+
+
+실행할 때마다 결과는 다르게 나올 수 있다. (처음에 진행했을 때는 'Soft Voting' 모델에서 가장 높은 정확도가 나타났다.)
+
+
+아무튼, 상황에 맞게 가장 좋은 성능이 좋은 모델을 선택하는 것이 중요하다!
+
+
+　
+
+
+　
+
+
+## 마무리
+
+
+이렇게해서 앙상블 기법에 대해서 알아보았다.
+
+
+다음 포스트는 '비지도학습(Unsupervised Learning)'에 해당하는 '군집화(Clustering)', 그 중에서 'k 평균 알고리즘(k-Means Clustering Algorithm)'에 대해서 다룰 예정이다.
+
+
+그럼, 다음 포스트에서 보도록 하겠다!
