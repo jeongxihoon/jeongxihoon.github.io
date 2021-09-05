@@ -587,7 +587,7 @@ plt.show()
 이렇게해서 앙상블 기법에 대해서 알아보았다.
 
 
-다음 포스트는 '비지도학습(Unsupervised Learning)'에 해당하는 '군집화(Clustering)', 그 중에서 'k 평균 알고리즘(k-Means Clustering Algorithm)'에 대해서 다룰 예정이다.
+다음 포스트는 '비지도학습(Unsupervised Learning)'에 해당하는 '군집화(Clustering)', 그 중에서 'k 평균 알고리즘(k-Means Clustering)'에 대해서 다룰 예정이다.
 
 
 그럼, 다음 포스트에서 보도록 하겠다!
