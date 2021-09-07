@@ -32,7 +32,10 @@ last_modified_at: 2021-09-07
 k-평균 알고리즘은 대표적인 비지도학습(Unsupervised Learning) 알고리즘인 군집화(Clustering) 중 하나이다.
 
 
-이번 예제는 놀랍도록 간단해서 실망적... Data Set이 너무나 지나치도록 간단하다...
+이번 예제는 놀랍도록 간단해서 실망적...
+
+
+Data Set이 너무나 지나치도록 간단하다...
 
 
 k-평균 알고리즘에 대한 이론 설명을 보기 좋게 이해할 수 있도록 도와주는 간단한 예제인 듯하다!
@@ -71,7 +74,7 @@ k-평균 알고리즘은 다음의 단계를 거치면서 진행된다.
 'k-평균 알고리즘'에서의 'k'는 **몇 개의 군집(Cluster)으로 Data들을 분류할 것인가**를 나타내는 변수이다.
 
 
-이 k값은 사용자가 정의하는 하이퍼파라미터(Hyperparameter)이다.
+__이 k값은 사용자가 정의하는 하이퍼파라미터(Hyperparameter)__이다.
 
 
 　
@@ -256,8 +259,10 @@ df
 여담이지만, 책의 코드는 df의 자료들을 그냥 노가다 식으로 할당했다.
 
 
-`df.loc[0] = [185,60]`
-`df.loc[1] = [180,60]`
+```python
+df.loc[0] = [185,60]
+df.loc[1] = [180,60]
+```
 
 
 뭐 이런 식으로 말이다.
@@ -282,7 +287,7 @@ sns.lmplot('height', 'weight',
 ```
 
     
-![png](/post_images/machinelearning_kMC/output_11_2.png)
+![png](/post_images/machine_learning_kMC/output_11_2.png)
     
 
 　
@@ -313,7 +318,7 @@ sns.lmplot('height', 'weight', data = df, fit_reg = False,
 ```
 
 
-![png](/post_images/machinelearning_kMC/output_14_2.png)
+![png](/post_images/machine_learning_kMC/output_14_2.png)
     
     
 위의 그래프에서 같은 색의 점으로 나타나는 것은 같은 군집(Cluster)로 분류된 것이다.
