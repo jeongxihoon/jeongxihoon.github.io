@@ -333,7 +333,7 @@ sns.lmplot('height', 'weight', data = df, fit_reg = False,
 　
 
 
-### 마무리
+## 마무리
 
 
 이렇게해서 군집화 중 k-평균 알고리즘에 대해서 알아보았다.
