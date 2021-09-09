@@ -1,5 +1,5 @@
 ---
-title: "[Machine Learning] k-평균 알고리즘(k-Means Clustering)을 활용해 키-몸무게에 따른 체형 군집화하기!!"
+title: "[Machine Learning] k-평균 알고리즘(k-Means Clustering)을 활용해 키-몸무게에 따른 체형 군집화하기!"
 excerpt: "k-평균 알고리즘(k-Means Clustering)과 키-몸무게 Data를 활용하여 체형 군집화를 해보았다."
 
 categories:
