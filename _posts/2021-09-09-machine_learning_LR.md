@@ -109,7 +109,7 @@ $error = (y_i - \theta x_i)$
 그렇다면, 제곱 오차(Squared Error)는 다음과 같다.
 
 
-$square error = (y_i - \theta x_i)^2$
+$square\,error = (y_i - \theta x_i)^2$
 
 
 그냥 오차는 음수와 양수 모두를 값으로 가질 수 있지만, 제곱 오차는 항상 양수를 갖는다.
