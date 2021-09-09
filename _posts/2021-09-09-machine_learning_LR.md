@@ -329,6 +329,18 @@ model.fit(X, Y, batch_size = 10, epochs = 10, verbose = 1)
 `model`에 X, Y Data를 적용시켜 학습을 진행하였다.
 
 
+출력된 학습 결과를 보면 알 수 있듯이, 학습을 하면 할수록 손실(loss)이 줄어들고 있다.
+
+
+이는 MSE가 줄어들고 있다는 의미, 즉 최적의 $\theta$값을 찾아가고 있음을 의미한다.
+
+
+또한 7번째 학습부터는 loss가 일정한 것으로 보아 7번째 학습에서 이미 최적의 $\theta$값을 찾았다고 볼 수 있다.
+
+
+다음은 `model.fit()`의 parameter에 대한 설명이다.
+
+
 - `batch_size = 10` : 총 10개의 Data로 학습을 진행하였기 때문에 size를 10으로 지정하여 학습을 진행했다.
 - `epochs = 10` : 10번 반복 학습을 진행하도록 하였다.
 - `verbose = 1` : 학습 진행 상황을 출력할 수 있도록 하는 옵션이다. 0, 1, 2 등 총 3가지로 적용할 수 있으며, 숫자가 커질수록 더 자세하게 학습 진행 상황을 출력해준다.
@@ -357,7 +369,7 @@ plt.show()
 ```
 
     
-![png](/post_image/machine_learning_LR/output_15_0.png)
+![png](/post_images/machine_learning_LR/output_15_0.png)
     
 
 위의 그래프에서 볼 수 있듯이, 학습한 선형회귀 그래프가 실제값들과 근접하다는 것을 알 수 있다.
