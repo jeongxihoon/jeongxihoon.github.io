@@ -8,5 +8,5 @@ main:
     url: https://jeongxihoon.github.io/categories
   - title: "Tag"
     url: https://jeongxihoon.github.io/tags
-  # - title: "Sitemap"
-  #   url: /sitemap/
+  - title: "Test Sphere"
+    url: https://jeongxihoon.githun.io/test_sphere
