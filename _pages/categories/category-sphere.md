@@ -176,7 +176,7 @@ toc_sticky: true
 
 						if ( i < 5 ) {
 
-							const scale = object.userData.originalScale * ( i / 5 + 1 ) * ( 1 + 0.5 * Math.sin( 7 * time ) );
+  					const scale = object.userData.originalScale * ( i / 5 + 1 ) * ( 1 + 0.5 * Math.sin( 7 * time ) );
 
 							object.scale.x = object.scale.y = object.scale.z = scale;
                       
