@@ -47,7 +47,7 @@ toc_sticky: true
 
 				scene = new THREE.Scene();
 
-				const parameters = [[ 0.25, 0xff1200, 1 ], [ 0.5, 0xffdd00, 1 ], [ 0.75, 0xfa6340, 0.75 ], [ 1, 0xfac690, 0.5 ], [ 1.25, 0xfa26a1, 0.8 ],
+				const parameters = [[ 0.10, 0xff1200, 1 ], [ 0.5, 0xffdd00, 1 ], [ 0.75, 0xfa6340, 0.75 ], [ 1, 0xfac690, 0.5 ], [ 1.25, 0xfa26a1, 0.8 ],
 					[ 3.0, 0xaaaaaa, 0.75 ], [ 3.5, 0xffffff, 0.5 ], [ 4.5, 0xffffff, 0.25 ], [ 5.5, 0xffffff, 0.125 ]];
 
 				const geometry = createGeometry();
