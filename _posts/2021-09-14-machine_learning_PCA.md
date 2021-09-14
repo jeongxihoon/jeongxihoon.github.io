@@ -732,18 +732,6 @@ sns.lmplot('PC1', 'y-axis', data = result, fit_reg = False,
 plt.title('PCA result')
 ```
 
-    /usr/local/lib/python3.7/site-packages/seaborn/_decorators.py:43: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
-      FutureWarning
-
-
-
-
-
-    Text(0.5, 1.0, 'PCA result')
-
-
-
-
     
 ![png](/post_images/machine_learning_PCA/output_25_2.png)
 
@@ -788,18 +776,6 @@ sklearn_result['label'] = Y
 sns.lmplot('PC1', 'y-axis', data = sklearn_result, fit_reg = False,
           scatter_kws = {'s': 50}, hue = 'label')
 ```
-
-    /usr/local/lib/python3.7/site-packages/seaborn/_decorators.py:43: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
-      FutureWarning
-
-
-
-
-
-    <seaborn.axisgrid.FacetGrid at 0x7f675fa43750>
-
-
-
 
     
 ![png](/post_images/machine_learning_PCA/output_29_2.png)
