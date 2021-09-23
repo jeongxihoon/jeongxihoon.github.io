@@ -23,10 +23,10 @@ last_modified_at: 2021-09-23
 ---
 
 
-딥러닝(Deep Learning)을 주제로 다시 돌아왔다!
+**딥러닝(Deep Learning)**을 주제로 다시 돌아왔다!
 
 
-오늘 소개할 것은 퍼셉트론(Perceptron)이다.
+오늘 소개할 것은 **퍼셉트론(Perceptron)**이다.
 
 
 그 중에서도 단일 퍼셉트론으로 가장 기본 연산인 'AND'와 'OR' 연산을 구현해보았다.
